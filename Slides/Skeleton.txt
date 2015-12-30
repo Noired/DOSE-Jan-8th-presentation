@@ -1,0 +1,22 @@
+Skeleton
+
+Intro [Luca]
+Argentini: comunicazione, divisione lavori, skill, presenza, lib non compilava, Github, eiffel, .ecf
+  
+Lib 
+Solitaire: closed_list[Liviu], test[Fabri]
+Adversary: [Alberto]
+
+App
+UML: pattern, legame con ai, divisione compiti e interfacce
+thread[Liviu]
+Solitaire: irrisolvibilità, heuristic[Fabri]
+Adversary: heuristic (doc), label non si aggiornano, push mancato (no doc) [Luca]+[Alberto]
+
+Bug
+Nostri bug (pochi) [Luca]
+Riflessioni vedendo altro codice [Fabri]
+Riflessioni sulla bug competition [Liviu]
+
+Demo
+
