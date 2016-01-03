@@ -1,0 +1,46 @@
+TEST
+
+
+As far as the second assignment is concerned, we were provided a template including all the base classes the library was supposed to have and two puzzles for the purpose of testing our engines were working correctly.
+
+
+1. The Water Jar Puzzle and its drawbacks 
+
+The problem to test our engines on was the "Water Jar Puzzle". Three jars have different capacity -(19, 13, 7)- and are initially filled with some water each -(0, 13, 7). The goal is to reach a particular configuration (10, 10, 0).
+
+At first glance, only a few engines seemed to work. Some of them were getting stuck computing indefinitely. This was particularly weird considering that some of the ones working the problem out were very similar in terms of time complexity to the ones getting stuck. Reducing the complexity of the problem helped out. This was taken as a hint to analyze such puzzle a little bit deeper. An hypothesis was made: The puzzle is so reticular, i.e. it has  many cycles in its search graph, that performing a naive blind frontier-based tree search was not powerful enough. This proved to be true as we noticed the successful engines were using a closed-list-based search, avoiding wasting so much time in analyzing already examined paths.
+
+From that moment onwards, we seriously took into account the importance of providing both the two search approaches, especially if considering the perspective of writing a general purpose AI library, disregarding the particular search problem we would have been facing during the next assignment.
+
+Allowing the user to go through one kind of search, rather than the other, turned out to be the best approach, since both of them had drawbacks.
+
+>> show screen shot about warning comments <<
+
+
+2. The need for another test case
+
+Stated that we were going to offer both the two search approaches, the Water Jar Puzzle was not enough as it was suitable only for testing the engines with the "visited_state_control" feature enabled.
+
+In turn, we needed another test case to prove the correctness of our engines performing a naive frontier-fashioned search. Such test case should have been small and not particularly reticular as the water jar puzzle was.
+
+
+3. The Road to Bucharest problem
+
+Hence, I proposed to use a pretty classical problem, that is the Road to Bucharest, appearing in the "Artificial Intelligence, a Modern Approach" book by S. Russell and P. Norvig.
+
+>> show picture <<
+
+This search problem was suitable to prove the correct behavior of our engines and, despite being small, it was sufficiently well designed such that our engines were yielding different paths leading to the same goal state. This was particularly useful to feel the characteristic behavior of each different search algorithm. Moreover, the problem offered a simple and efficient heuristic function, that is the straight-line distance from/to Bucharest. 
+
+
+4. Extending the test case to stress heuristic engines
+
+Nevertheless we decided to stress a bit more the algorithms from Argentina. After assessing the validity of Demian's engines I set up two other test cases for Romina's by modifying the Road to Bucharest Problem.
+
+>> show pictures <<
+
+
+5. Adversary search tests missing
+
+All this effort and attention in testing was not spent to the adversary search engines as well. Alberto was the only one who was assigned the development of such engines, while all of us were focusing on single agent search, so, as we were running out of time, we weren't in the position of spending much time in learning about them and build test cases during our single agent search testing activity. Moreover we artlessly thought the simple tic tac toe example provided was enough to prove the correctness of the algorithms. In turn, they proved to be inaccurate, and we had to modify them during the next iteration.
+
