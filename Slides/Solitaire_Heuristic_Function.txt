@@ -1,0 +1,29 @@
+SOLITAIRE HEURISTIC FUNCTION
+
+
+1. Solitaire Mancala: a non-solvable problem
+
+After being assigned the game, it took some time to discover that the solitaire game was not solvable. A few tries on it were sufficient to realize the game was very complicated and hard to work out. Hence we tried to reconstruct the path to the solution backward, but stopped after a dozen of steps.
+
+
+2. Fail to apply the most common approach
+
+The fact that is impossible to reach the goal state from any initial state, along with the huge cardinality of the state set, made it very unconvenient to apply the common approach in designing a heuristic function that is computing somehow the distance of a state to the goal one.
+
+The number of stored stones with respect to the overall amount of them is an accurate information, because there is no direct, precise corrispondence between a step and a stored stone and moreover, a state with a big number of stored stones may eventually be a dead one.
+
+On the other hand, some experience showed that designing the heuristic function just to avoid losing the game was not particularly effective.
+
+
+3. A customized approach: Life Expectancy
+
+The solution I decided to go through dealt with mixing the information about the number of stored stones with the one about the "health" of the state, i.e. how much it is close to a game over for loss.
+
+This "loss feature" of the solitaire game required a particular heed in modeling, since the theoretical AI search problem is not concerned with the concept of a loss. Hence, I modeled this by giving no successors to  any state associated with a loss.
+
+In so doing, it was possible to measure the "life expectancy" by counting the number of its offspring up to a fixed depth.
+
+Summing up, a state is as much good as the number of the stored stones weigthened with respect to its life expectancy up to a given depth parameter that can eventually be tuned.
+
+>> show pictures <<
+
