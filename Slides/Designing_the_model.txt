@@ -1,0 +1,37 @@
+DESIGNING THE MODEL
+
+
+1. Two models into one
+
+The Mancala Game, as stated into the requirements, consisted in two mode: adversary and solitaire. We decided to keep this separation even in assigning tasks inside our group here in Milan. Hence, we set up to teams, one developing the adversary side of the model and the other one focusing on the solitaire side. Before starting developing the two parts separately we designed a common interface defining a hierarchy with common parent classes. Then I wrote a general template for all the classes of the model by sketching the necessary interface methods along with comments specifying their inputs, outputs and, in some cases, their base functioning too. Then the two teams started implementing such these model classes.
+
+
+2. The board shared class
+
+The Board class is the one holding the core information of the whole model, that is association the between stones, holes and stores. It is shared among different parts of the software architecture. One object instantiation of this class is held in the view and wrapped inside the adversary and the solitaire state.
+The view's Board object is the one storing the information displayed in the g.u.i. so that changing the state of the game means updating the view's board feature reference to another board object representing the new state.
+The choice of differentiating the concept of Board with the concept of State was driven by the need to keep a lighter common structure between the view and the model, disregarding the actual operations applicable to the game state that are of no use for the view classes.
+
+
+3. Integrating the AI library
+
+The AI classes previously developed were integrated with the game classes by the means of inheritance and composition through an abstract pattern perspective.
+
+Heuristic State Cost Search Problem, Adversary Search Problem, Search State, and Adversary Search State classes were inherited and made concrete, as well as enriched with the characteristic "drop" features of the Mancala Game.
+
+Search Engine and Adversary Search Engine classes were associated to the Match classes in order to let the match call them to perform an AI search.
+
+
+4. Keeping the game and the AI engine separated
+
+As far as the adversary mode is concerned, it is required to deal with a "player vs AI" match, thus the AI engine is an intrinsic part of the game.
+Instead, the solitaire mode is loosely associated to the AI library, it is only an optional feature, and actually it should be possible to play the game disregarding the AI functionalities. That's why we designed the solitaire side of the model in order to separate the game logic and the AI engine as much as possible. Hence, the strong separation between Solitaire Match and Mancala Solitaire Problem classes and the choice of encapsulating the ability to compute descendant states inside the Mancala Solitaire State, leaving the Mancala Solitaire Problem get successors feature relatively clean and straightforward.
+
+Besides making this feature simpler, such choice is important to allow the possibility to unplug the AI block and continue playing without any deficiencies, as the successors and the information for a state to be successful or deadly can be computed disregarding the search problem.
+
+When a hint or an autoplay is required from the user, then the match invokes the perform search routine on its search engine, that is using features of the Mancala Solitaire Problem, for instance it is querying about the heuristic values and the initial search state, that is constructed starting from the current state of the Solitaire Match.
+
+
+5. Interfacing with the view
+
+In order to separate the development of the View -Argentina- from the development of the Model and the Controller -Italy- we defined a general interface, incapsulated into just one class which was later expanded by Demian and Romina into a more complete and articulate cluster. We defined the prototypes for methods they should have expected to be called and the methods they had the possibility to call from their cluster, restricting the binding to the smallest possible number of classes.
