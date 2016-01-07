@@ -1,0 +1,31 @@
+BUG COMPETITION: INSPECTING OTHER TEAMS' CODE
+
+
+1. Where to look
+
+My bug research was lead by the idea of finding bugs similar to the ones we had found and fixed in our project during the development. It proved to be a powerful idea because it helped discovering several bugs.
+
+Among them:
+- parent cutting before performing the search
+- setting the Iterative Deepening step
+- wrong use of Iterative Deepening step
+- autoplay and game hint features in general in updating the g.u.i.
+- usage of closed list
+
+>> show kali pictures and explain them in general <<
+
+
+2. Cohesion and coherence
+
+With some surprise I discovered one of the group with few bugs reported has developed a poor-quality software.
+
+Basically, the messy architecture, the missing of diagrams and the complete lack of coherence and cohesion discouraged other students to get their hands into such code and find problems that cannot directly be discovered by the final g.u.i.. In particular, it proved to be very complicated to spot the right classes and features to modify in order to get to a specific configuration to test out.
+
+>> show pictures <<
+
+Lack of cohesion and coherence is a practical issue as well, while debugging. When interested in some particular feature it is very disturbing and dazing to navigate among tons of other completely off-topic features.
+
+
+3. (Missed) Separation between Game and AI
+
+---
